@@ -1,0 +1,25 @@
+name: Git Actiong to test Automation
+on:
+    push:
+        branches: [main]
+jobs:
+    node-setup-job: 
+      runs-on: ubuntu-latest
+
+      defaults:
+        run:
+          working-directory: frontend
+
+      steps:
+          - name: Checkout Repo
+            uses: actions/checkout@v4
+
+          - name: Initialize Node
+            uses: actions/setup-node@v4
+
+          - name: Install frontend
+            run: npm install
+
+          - name: Build Frontend
+            run: npm run build
+            
